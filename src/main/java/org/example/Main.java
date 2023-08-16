@@ -1,34 +1,34 @@
 package org.example;
 //A=65
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+import java.util.stream.IntStream;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public int singleNumber(int[] nums) {
-        Map<Integer, Integer> numCountMap = new HashMap<>();
-
-        for (int num : nums) {
-            numCountMap.put(num, numCountMap.getOrDefault(num, 0) + 1);
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for (char c : s.toCharArray()) {
+            if (c == '(')
+                stack.push(')');
+            else if (c == '{')
+                stack.push('}');
+            else if (c == '[')
+                stack.push(']');
+            else if (stack.isEmpty() || stack.pop() != c)
+                return false;
         }
-
-        for (int num : nums) {
-            if (numCountMap.get(num) == 1) {
-                return num;
-            }
-        }
-
-        return -1;
-
-
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        int[] a={4,1,2,1,2};
-        System.out.println(main.singleNumber(a));
+        String s = "()";
+        System.out.println(main.isValid(s));
 
 
     }

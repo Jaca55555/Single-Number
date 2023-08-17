@@ -10,25 +10,33 @@ import java.util.stream.IntStream;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<Character>();
-        for (char c : s.toCharArray()) {
-            if (c == '(')
-                stack.push(')');
-            else if (c == '{')
-                stack.push('}');
-            else if (c == '[')
-                stack.push(']');
-            else if (stack.isEmpty() || stack.pop() != c)
-                return false;
+    public boolean isHappy(int n) {
+           int a=n;
+           int b=n;
+           do {
+               a=square(a);
+               b=square(square(b));
+           }while (a!=b);
+           return a==1;
+
+    }
+    public int square(int num) {
+
+        int ans = 0;
+
+        while(num > 0) {
+            int remainder = num % 10;
+            ans += remainder * remainder;
+            num /= 10;
         }
-        return stack.isEmpty();
+
+        return ans;
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        String s = "()";
-        System.out.println(main.isValid(s));
+        int n=19;
+        System.out.println(main.isHappy(n));
 
 
     }

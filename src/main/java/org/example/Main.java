@@ -1,21 +1,30 @@
 package org.example;
-//A=65
-
-import java.util.*;
-import java.util.stream.IntStream;
-
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public double myPow(double x, int n) {
-        return Math.pow(x,n);
-
+    public void rob(int n) {
+        int k = 0;
+        int m = 2*n-1;
+        int[][] a = new int[m][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = k; j < m; j++) {
+                for (int l = k; l < m; l++) {
+                    a[j][l]=n-i;
+                }
+            }
+            k++;
+            m--;
+        }
+        for (int i = 0; i < 13; i++) {
+            for (int j = 0; j < 13; j++) {
+                System.out.print(a[i][j]+"  ");
+            }
+            System.out.println();
+        }
     }
+
     public static void main(String[] args) {
         Main main = new Main();
-        double x=2.00000;
-        int n=10;
-        System.out.println(main.myPow(x,n));
+        int a=7;
+        main.rob(a);
 
 
     }

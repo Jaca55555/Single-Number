@@ -1,30 +1,29 @@
 package org.example;
+
 public class Main {
-    public void rob(int n) {
-        int k = 0;
-        int m = 2*n-1;
-        int[][] a = new int[m][m];
-        for (int i = 0; i < n; i++) {
-            for (int j = k; j < m; j++) {
-                for (int l = k; l < m; l++) {
-                    a[j][l]=n-i;
-                }
+    public static int binarySearch(int[] numbers, int numberToFind) {
+        int low = 0;
+        int high = numbers.length - 1;
+        while (low <= high) {
+            int middlePosition = (low + high) / 2;
+            int middleNumber = numbers[middlePosition];
+            if (numberToFind == middleNumber) {
+                return middlePosition;
             }
-            k++;
-            m--;
-        }
-        for (int i = 0; i < 13; i++) {
-            for (int j = 0; j < 13; j++) {
-                System.out.print(a[i][j]+"  ");
+            if (numberToFind < middleNumber) {
+                high = middlePosition - 1;
+            } else {
+                low = middlePosition + 1;
             }
-            System.out.println();
         }
+        return -1;
+
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        int a=7;
-        main.rob(a);
+        int[] ints={1,2,3,4,5,6,7,8,9,10,11};
+        System.out.println(binarySearch(ints,9));
 
 
     }

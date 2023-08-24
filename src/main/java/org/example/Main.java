@@ -1,29 +1,22 @@
 package org.example;
 
 public class Main {
-    public static int binarySearch(int[] numbers, int numberToFind) {
-        int low = 0;
-        int high = numbers.length - 1;
-        while (low <= high) {
-            int middlePosition = (low + high) / 2;
-            int middleNumber = numbers[middlePosition];
-            if (numberToFind == middleNumber) {
-                return middlePosition;
-            }
-            if (numberToFind < middleNumber) {
-                high = middlePosition - 1;
-            } else {
-                low = middlePosition + 1;
+    public int maximum69Number (int num) {
+        String str = Integer.toString(num);
+        char[] charArray = str.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] == '6') {
+                charArray[i] = '9';
+                return Integer.parseInt(String.valueOf(charArray));
             }
         }
-        return -1;
-
+        return num;
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        int[] ints={1,2,3,4,5,6,7,8,9,10,11};
-        System.out.println(binarySearch(ints,9));
+        int n=9996;
+        System.out.println(main.maximum69Number(n));
 
 
     }

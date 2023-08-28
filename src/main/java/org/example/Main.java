@@ -1,22 +1,23 @@
 package org.example;
 
 public class Main {
-    public int maximum69Number (int num) {
-        String str = Integer.toString(num);
-        char[] charArray = str.toCharArray();
-        for (int i = 0; i < charArray.length; i++) {
-            if (charArray[i] == '6') {
-                charArray[i] = '9';
-                return Integer.parseInt(String.valueOf(charArray));
-            }
+    public String largestOddNumber(String num) {
+
+        for(int i = num.length() - 1;i >= 0;i--)
+        {
+            if((num.charAt(i)-'0')%2 != 0)
+                return num.substring(0,i+1);
         }
-        return num;
-    }
+        return "";
+        }
+
+
 
     public static void main(String[] args) {
         Main main = new Main();
-        int n=9996;
-        System.out.println(main.maximum69Number(n));
+        String a="35427";
+        System.out.println(main.largestOddNumber(a));
+
 
 
     }

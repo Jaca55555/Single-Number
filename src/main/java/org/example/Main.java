@@ -1,20 +1,26 @@
 package org.example;
 
-public class Main {
-    public boolean threeConsecutiveOdds(int[] arr) {
-        for (int i = 1; i <arr.length-1 ; i++) {
-            if (arr[i-1]%2==1&&arr[i]%2==1&&arr[i+1]%2==1){
-                return true;
-            }
-        }
-        return false;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Main {
+    public List<Integer> getRow(int rowIndex) {
+
+        List<Integer> list=new ArrayList<>(rowIndex+1);
+        list.add(0,1);
+        for (int i = 1; i <= rowIndex; ++i) {
+            list.add(1);
+            for (int j = i-1; j >0 ; --j) {
+                list.set(j,list.get(j)+list.get(j-1));
+            }
+
+        }return list;
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        int[] a = {2,6,4,1};
-        System.out.println(main.threeConsecutiveOdds(a));
+        int a=4;
+        System.out.println(main.getRow(a));
 
 
     }

@@ -1,20 +1,26 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Main {
-    public int countNegatives(int[][] grid) {
-        int sum=0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-               if (grid[i][j]<0)sum++;
-            }
+    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        String a = "";
+        String b = "";
+        for (String s:word1){
+            a+=s;
         }
-        return sum;
+        for (String w:word2){
+            b+=w;
+        }
+      return  a.equals(b);
+
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        int[][] a={{4, 3, 2, -1}, {3, 2, 1, -1}, {1, 1, -1, -2}, {-1, -1, -2, -3}};
-        System.out.println(main.countNegatives(a));
+        String[] a={"ab", "c"};
+        String[] b={"a", "bc"};
+        System.out.println(main.arrayStringsAreEqual(a,b));
 
 
     }

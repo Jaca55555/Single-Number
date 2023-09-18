@@ -1,26 +1,35 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class Main {
-    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
-        String a = "";
-        String b = "";
-        for (String s:word1){
-            a+=s;
-        }
-        for (String w:word2){
-            b+=w;
-        }
-      return  a.equals(b);
+    public int[] sortArrayByParity(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
 
+        while (left < right) {
+            while (left < right && nums[left] % 2 == 0) {
+                left++;
+            }
+
+            while (left < right && nums[right] % 2 != 0) {
+                right--;
+            }
+
+            if (left < right) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right--;
+            }
+        }
+
+        return nums;
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        String[] a={"ab", "c"};
-        String[] b={"a", "bc"};
-        System.out.println(main.arrayStringsAreEqual(a,b));
+        int[] nums={3,1,2,4};
+        System.out.println(main.sortArrayByParity(nums));
 
 
     }

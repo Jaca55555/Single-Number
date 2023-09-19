@@ -1,36 +1,27 @@
 package org.example;
 
-public class Main {
-    public int[] sortArrayByParity(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.util.Date;
 
-        while (left < right) {
-            while (left < right && nums[left] % 2 == 0) {
-                left++;
-            }
-
-            while (left < right && nums[right] % 2 != 0) {
-                right--;
-            }
-
-            if (left < right) {
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
-                left++;
-                right--;
-            }
-        }
-
-        return nums;
-    }
+class Main {
 
     public static void main(String[] args) {
-        Main main = new Main();
-        int[] nums={3,1,2,4};
-        System.out.println(main.sortArrayByParity(nums));
-
+        int[] mass=new int[1000];
+        for (int i = 0; i < mass.length; i++) {
+            mass[i]=(int) Math.random()*1000;
+        }
+        for (int i = 0; i < mass.length-1; i++) {
+            int mainIndex=i;
+            for (int j = i+1; j <mass.length-1 ; j++) {
+                if (mass[j]<mass[mainIndex]){
+                    mainIndex=j;
+                }
+            }
+            int temp=mass[i];
+            mass[i]=mass[mainIndex];
+            mass[mainIndex]=temp;
+        }
 
     }
 }

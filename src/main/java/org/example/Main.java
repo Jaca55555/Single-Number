@@ -1,27 +1,29 @@
 package org.example;
 
-import java.awt.*;
-import java.awt.geom.Point2D;
-import java.util.Date;
+import java.util.Arrays;
 
-class Main {
+ class Main {
+     public boolean canMakeArithmeticProgression(int[] arr) {
+
+         boolean t = true;
+         Arrays.sort(arr);
+
+         for (int i = 0; i < arr.length - 2; i++) {
+             int diff1 = Math.abs(arr[i] - arr[i+1]);
+             int diff2 = Math.abs(arr[i+1] - arr[i+2]);
+
+             if (diff1 != diff2) {
+                 return false;
+             }
+         }
+
+         return t;
+     }
 
     public static void main(String[] args) {
-        int[] mass=new int[1000];
-        for (int i = 0; i < mass.length; i++) {
-            mass[i]=(int) Math.random()*1000;
-        }
-        for (int i = 0; i < mass.length-1; i++) {
-            int mainIndex=i;
-            for (int j = i+1; j <mass.length-1 ; j++) {
-                if (mass[j]<mass[mainIndex]){
-                    mainIndex=j;
-                }
-            }
-            int temp=mass[i];
-            mass[i]=mass[mainIndex];
-            mass[mainIndex]=temp;
-        }
 
+        Main main = new Main();
+        int[] arr={3,5,1};
+        System.out.println(main.canMakeArithmeticProgression(arr));
     }
 }

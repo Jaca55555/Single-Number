@@ -1,35 +1,25 @@
 package org.example;
 
-import java.util.Arrays;
+class Main {
+    public String reverseOnlyLetters(String s) {
+        char temp[] = s.toCharArray();
+        int low = 0 , high = s.length()-1;
+        while(low < high){
+            if(Character.isAlphabetic(temp[low]) && Character.isAlphabetic(temp[high])){
+                char i = temp[low];temp[low] = temp[high];
+                temp[high] = i;
+                low++; high--;
+            }else if(!Character.isAlphabetic(temp[low]))  low++;
+            else if(!Character.isAlphabetic(temp[high]))  high--;
+        }
+        return String.valueOf(temp);
 
- class Main {
-     public int maxNumberOfBalloons(String text) {
-
-         char[] chars=new char[text.length()];
-         int a=0,b=0, n=0, l=0,o=0, s=0,g=0;
-         text.chars();
-         for (int i = 0; i < chars.length; i++) {
-             switch (text.charAt(i)){
-                 case 'b':  b++; break;
-                 case 'a':  a++; break;
-                 case 'l':  s++;{if (s%2==0)l++;
-                 }; break;
-                 case 'o':  g++;{
-                     if (g%2==0)o++;
-                 }; break;
-                 case 'n':  n++; break;
-
-             }
-         }
-         int min=0;
-        min= Math.min(Math.min(Math.min(b,a),Math.min(l,o)),n);
-         return min==-1?0:min;
-     }
+    }
 
     public static void main(String[] args) {
 
         Main main = new Main();
-        String a="krhizmmgmcrecekgyljqkldocicziihtgpqwbticmvuyznragqoyrukzopfmjhjjxemsxmrsxuqmnkrzhgvtgdgtykhcglurvppvcwhrhrjoislonvvglhdciilduvuiebmffaagxerjeewmtcwmhmtwlxtvlbocczlrppmpjbpnifqtlninyzjtmazxdbzwxthpvrfulvrspycqcghuopjirzoeuqhetnbrcdakilzmklxwudxxhwilasbjjhhfgghogqoofsufysmcqeilaivtmfziumjloewbkjvaahsaaggteppqyuoylgpbdwqubaalfwcqrjeycjbbpifjbpigjdnnswocusuprydgrtxuaojeriigwumlovafxnpibjopjfqzrwemoinmptxddgcszmfprdrichjeqcvikynzigleaajcysusqasqadjemgnyvmzmbcfrttrzonwafrnedglhpudovigwvpimttiketopkvqw";
-        System.out.println(main.maxNumberOfBalloons(a));
+        String nums ="ab-cd" ;
+        System.out.println(main.reverseOnlyLetters(nums));
     }
 }

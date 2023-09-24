@@ -9,6 +9,7 @@ class Main {
         char c = 0;
         for(char cs : s.toCharArray()) c ^= cs;
         for(char ct : t.toCharArray()) c ^= ct;
+        System.out.println();
         return c;
     }
 

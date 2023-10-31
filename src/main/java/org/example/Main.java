@@ -2,28 +2,39 @@ package org.example;
 
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 class Main {
-    public int getMaximumGenerated(int n) {
-        int[] nums=new int[n+1];
-        if(n==0) return 0;
-        nums[0]=0;
-        nums[1]=1;
-        nums[2]=1;
-        int max=1;
-        if (n>2) {
-            for (int i = 1; i <= n / 2; i++) {
-                nums[2 * i + 1] = nums[i] + nums[i + 1];
-                if (max < nums[2 * i + 1]) max = nums[2 * i + 1];
+    public String largestNumber(int[] nums) {
+        String[] numsStr = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            numsStr[i] = String.valueOf(nums[i]);
+        }
+        Arrays.sort(numsStr, new Comparator<String>() {
+            public int compare(String a, String b) {
+                String ab = a + b;
+                String ba = b + a;
+                return ba.compareTo(ab);
             }
-        }return max;
+        });
+        if (numsStr[0].equals("0")) {
+            return "0";
+        }
+        StringBuilder result = new StringBuilder();
+        for (String num : numsStr) {
+            result.append(num);
+        }
+        return result.toString();
+
     }
+    // add LinkedList>ArrayList
+
 
     public static void main(String[] args) {
-        Main main=new Main();
-        int n=2;
-        System.out.println(main.getMaximumGenerated(n));
-
+        Main main = new Main();
+        int[] nums={1,100,1101,92,2,3};
+        String b="aab";
+        System.out.println(main.largestNumber(nums));
 
 
     }

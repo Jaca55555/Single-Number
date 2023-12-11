@@ -8,8 +8,8 @@ class Main {
         Main main=new Main();
         File file =new File("D:\\Projects");
         System.out.println(file.exists());
-        System.out.println(getSize(file));
 
+        System.out.println(getSize(file));
 
 
     }
